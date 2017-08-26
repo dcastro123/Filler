@@ -6,7 +6,7 @@
 /*   By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/24 18:23:27 by dcastro-          #+#    #+#             */
-/*   Updated: 2017/08/24 20:18:31 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/08/26 16:23:37 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,33 @@
 
 int	main(void)
 {
-	t_env e;
+//	t_env e;
+	char	*line;
+	int		fd;
+	int		res;
+	int		num;
 
-	ft_bzero(&e, sizeof(t_env));
-
-
-
-
-
+	res = 0;
+	num = 0;
+	line = NULL;
+	fd = 0;
+//	ft_bzero(&e, sizeof(t_env));
+	int i = 0;
+	while ((res = get_next_line(fd, &line)) > 0)
+	{
+		printf("iteration: %d\n", i);
+		printf("[Ret: %d, # of Line: %d, FD: %d] %s\n", res, ++num, fd, line);
+		ft_strdel(&line);
+		i++;
+	}
+	ft_strdel(&line);
+	printf("[Ret: %d, # of Line: %d, FD: %d] %s\n", res, ++num, fd, line);
+	if ((fd > 0 && (close(fd) == -1 || res != 0)) || fd < 0)
+	{
+		if (!line)
+			write(1, "error\n", 6);
+		return (1);
+	}
+	printf ("/* Ret == 1 ; read line\n   Ret == 0 ; end of line(finish) */\n");
+	return (0);
 }

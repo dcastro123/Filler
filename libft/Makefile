@@ -6,7 +6,7 @@
 #    By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/18 17:55:35 by dcastro-          #+#    #+#              #
-#    Updated: 2017/08/24 17:59:11 by dcastro-         ###   ########.fr        #
+#    Updated: 2017/08/26 15:44:17 by dcastro-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ LIBFT =	ft_atoi.c ft_bzero.c ft_isalnum.c\
 	   	ft_lstnew.c ft_lstdelone.c ft_lstdel.c\
 	   	ft_lstadd.c ft_lstiter.c ft_lstmap.c\
 	   	ft_wdlen.c ft_range.c ft_list_size.c\
-	   	ft_itoa_base.c ft_uitoa.c\
+	   	ft_itoa_base.c ft_uitoa.c get_next_line.c\
 	   	ft_ultoa_base.c ft_uitoa_capbase.c ft_uitoa_base.c\
 	   	ft_printf.c start_printf.c handle_str.c handle_int.c\
 	   	handle_more_int.c arg_check.c format_out.c format_int.c
@@ -64,7 +64,7 @@ OBJS = 	ft_printf.o start_printf.o handle_str.o handle_int.o handle_more_int.o\
 	   	ft_lstnew.o ft_lstdelone.o ft_lstdel.o\
 	   	ft_lstadd.o ft_lstiter.o ft_lstmap.o\
 	   	ft_wdlen.o ft_range.o ft_list_size.o\
-	   	ft_uitoa.o ft_uitoa_capbase.o\
+	   	ft_uitoa.o ft_uitoa_capbase.o get_next_line.o\
 
 CMPSRCS = $(LIBFT)
 INCL = -I includes/libft.h -I includes/ft_printf.h

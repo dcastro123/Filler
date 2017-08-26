@@ -6,7 +6,7 @@
 /*   By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 20:36:35 by dcastro-          #+#    #+#             */
-/*   Updated: 2017/08/17 16:11:59 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/08/26 15:44:44 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <ctype.h>
 # include <limits.h>
 
+# define BUFF_SIZE 32
+
 typedef	struct		s_list
 {
 	void			*content;
@@ -26,6 +28,7 @@ typedef	struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+int					get_next_line(const int fd, char **line);
 int					ft_atoi(const char *str);
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);
