@@ -6,7 +6,7 @@
 /*   By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/24 18:23:27 by dcastro-          #+#    #+#             */
-/*   Updated: 2017/08/26 16:23:37 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/08/30 19:36:28 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ int	main(void)
 	res = 0;
 	num = 0;
 	line = NULL;
-	fd = 0;
+	fd = 1;
 //	ft_bzero(&e, sizeof(t_env));
 	int i = 0;
+	printf("testsetsetsetsetset\n");
 	while ((res = get_next_line(fd, &line)) > 0)
 	{
 		printf("iteration: %d\n", i);
