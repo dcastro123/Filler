@@ -6,42 +6,48 @@
 /*   By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/24 18:23:27 by dcastro-          #+#    #+#             */
-/*   Updated: 2017/08/30 19:36:28 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/09/22 17:33:00 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/filler.h"
 
+int	ft_error(char *s)
+{
+	ft_putstr(s);
+	return (0);
+}
+
+// int	check_file(t_env *env)
+// {
+// 	char	*line;
+// 	int		i;
+
+// 	line = NULL;
+// 	i = 0;
+// 	if (get_next_line(0, &line) > 0)
+// 	{
+// 		if (ft_strchr(line, '\n'))
+// 	}
+// }
 int	main(void)
 {
-//	t_env e;
+	t_env	*env;
 	char	*line;
-	int		fd;
-	int		res;
-	int		num;
 
-	res = 0;
-	num = 0;
 	line = NULL;
-	fd = 1;
-//	ft_bzero(&e, sizeof(t_env));
-	int i = 0;
-	printf("testsetsetsetsetset\n");
-	while ((res = get_next_line(fd, &line)) > 0)
+	if (!(env = (t_env*)malloc(sizeof(t_env))))
+		ft_error("Struct malloc failed!\n");
+	// if (!(check_file(env)))
+	// 	ft_error("Read error!\n");
+	while (get_next_line(0, &line) > 0)
 	{
-		printf("iteration: %d\n", i);
-		printf("[Ret: %d, # of Line: %d, FD: %d] %s\n", res, ++num, fd, line);
+		ft_putstr_fd(">>", 2);
+		ft_putendl_fd(line, 2);
+		ft_putstr("\n");
 		ft_strdel(&line);
-		i++;
 	}
 	ft_strdel(&line);
-	printf("[Ret: %d, # of Line: %d, FD: %d] %s\n", res, ++num, fd, line);
-	if ((fd > 0 && (close(fd) == -1 || res != 0)) || fd < 0)
-	{
-		if (!line)
-			write(1, "error\n", 6);
-		return (1);
-	}
-	printf ("/* Ret == 1 ; read line\n   Ret == 0 ; end of line(finish) */\n");
+	ft_putendl_fd("done reading\n", 2);
 	return (0);
 }
