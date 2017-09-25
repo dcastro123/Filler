@@ -6,7 +6,7 @@
 /*   By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/24 18:23:27 by dcastro-          #+#    #+#             */
-/*   Updated: 2017/09/23 02:58:22 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/09/25 00:59:14 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,39 +18,34 @@ int	ft_error(char *s)
 	return (0);
 }
 
-int	check_file(t_env *env)
+static int	create_map(t_env *e, char *line)
 {
-	char	*line;
-	t_board	*board;
+	t_board *board;
 	int		i;
 
-	i = 0;
 	board = &env->board;
-	get_next_line(0, &line);
-	if (ft_strchr(line, '1'))
+
+	if (!(env->board->map = (char**)malloc(sizeof(char*) * (env->map_x + 1))))
+		ft_error("malloc error\n");
+	i = -1;
+	env->board->map[env->map_y] = NULL;
+	while (++i < env->map_y)
 	{
-		env->p2 = 'X';
-		env->p1 = 'O';
+		if (!(env->board->map[i] = (char*)malloc(sizeof(char) * (env->map_x + 1))))
+			ft_error("malloc error\n");
 	}
-	else if (ft_strchr(line, '2'))
-	{
-		env->p1 = 'X';
-		env->p2 = 'O';
-	}
-	else
-	{
-		ft_strdel(&line);
-		return (0);
-	}
-	ft_strdel(&line);
+}
+
+static	int		get_map_and_piece(t_env *e)
+{
 	get_next_line(0, &line);
 	if (ft_strstr(line, "Plateau"))
 	{
 		fprintf(stderr, "Line being fed: %s\n", &line[i]);
-		env->map_h = ft_atoi(line + 8);
-		env->map_w = ft_atoi(line + 10);
-		fprintf(stderr, "map_y is: %d\n", env->map_h);
-		fprintf(stderr, "map_x is: %d\n", env->map_w);
+		env->map_y = ft_atoi(line + 8);
+		env->map_x = ft_atoi(line + 10);
+		fprintf(stderr, "map_y is: %d\n", env->map_y);
+		fprintf(stderr, "map_x is: %d\n", env->map_x);
 		ft_strdel(&line);
 	}
 	else if (ft_strstr(line, "Piece"))
@@ -63,16 +58,26 @@ int	check_file(t_env *env)
 	}
 	else
 		ft_strdel(&line);
+}
+
+int	check_player(t_env *env, char *line)
+{
+	char	*line;
+	int		i;
+
+	i = 0;
 	get_next_line(0, &line);
-	fprintf(stderr, "Line being fed: %s\n", line);
-	ft_strdel(&line);
-	int i = 0;
-	int j = 0;
-	while (get_next_line(0, &line) > 0)
+	if (ft_strchr(line, '1'))
 	{
-		//go until space before '.'
-		//malloc here for each line in map array env->board.map[i][j]
+		env->p2 = 'X';
+		env->p1 = 'O';
 	}
+	else if (ft_strchr(line, '2'))
+	{
+		env->p1 = 'X';
+		env->p2 = 'O';
+	}
+	ft_strdel(&line);
 	return (1);
 }
 
@@ -83,11 +88,10 @@ int	main(void)
 	char	*line;
 
 	line = NULL;
+	p = &env->p;
 	if (!(env = (t_env*)malloc(sizeof(t_env))))
 		ft_error("Struct malloc failed!\n");
-	p = &env->p;
-	if (!(check_file(env)))
-		ft_error("Read error!\n");
+	check_player(env);
 	// while (get_next_line(0))
 	// while (get_next_line(0, &line) > 0)
 	// {

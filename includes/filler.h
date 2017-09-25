@@ -6,7 +6,7 @@
 /*   By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/24 18:11:29 by dcastro-          #+#    #+#             */
-/*   Updated: 2017/09/23 02:36:17 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/09/25 00:35:31 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ typedef	struct s_board
 {
 	t_p 	p;
 	char	**map;
-	int		map_x;
-	int		map_y;
+	int		map_posx;
+	int		map_posy;
 }				t_board;
 
 typedef struct 	s_enemy
@@ -60,8 +60,8 @@ typedef	struct s_env
 	t_p 	p;
 	char	p1;
 	char	p2;
-	int		map_h;
-	int		map_w;
+	int		map_x;
+	int		map_y;
 	int		tot_score;
 	int		open;
 }				t_env;
