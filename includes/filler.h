@@ -6,7 +6,7 @@
 /*   By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/24 18:11:29 by dcastro-          #+#    #+#             */
-/*   Updated: 2017/09/25 00:35:31 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/09/25 23:43:50 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ typedef	struct s_p
 {
 	int	x;
 	int	y;
-	int	width;
-	int	height;
+	int	x_size;
+	int	y_size;
 	char	**piece;
 }				t_p;
 
 typedef	struct s_board
 {
-	t_p 	p;
 	char	**map;
 	int		map_posx;
 	int		map_posy;
@@ -65,4 +64,8 @@ typedef	struct s_env
 	int		tot_score;
 	int		open;
 }				t_env;
+
+void	check_player(t_env *env);
+int	ft_error(char *s);
+void	get_piece(t_env *env, char *line);
 #endif
