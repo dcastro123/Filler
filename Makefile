@@ -6,7 +6,7 @@
 #    By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/24 18:24:41 by dcastro-          #+#    #+#              #
-#    Updated: 2017/09/22 17:15:28 by dcastro-         ###   ########.fr        #
+#    Updated: 2017/09/28 00:01:17 by dcastro-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CMP = gcc -Wall -Werror -Wextra -g
 
 LIB = -L libft/ -lft
 
-SRCS = srcs/main.c
+SRCS = srcs/main.c srcs/parse.c srcs/utils.c srcs/check.c
 
 INC = $(LIB) -I includes/filler.h
 

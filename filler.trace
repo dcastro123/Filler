@@ -1,1 +1,7 @@
-seed = 9577
+seed = 5671
+O: error on input
+X: timedout
+./filler: Segfault at 0
+./filler won
+Score:
+0AGAINST0
