@@ -6,7 +6,7 @@
 /*   By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/27 17:36:17 by dcastro-          #+#    #+#             */
-/*   Updated: 2017/09/29 01:02:30 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/09/29 01:49:03 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,21 +118,20 @@ void	go_upleft(t_env *env)
 
 void	check_piece(t_env *env)
 {
-	fprintf(stderr, "%s\n", "????????????");
-	if (env->start == 0)
-		get_start(env);
-	// if (env->dir == RIGHT)
-	// 	ft_error("fl");
-	if (env->dir == LEFT)
-	{
-		fprintf(stderr, "%s\n", "<<<<<<<<<<<<<<<");
-		go_upleft(env);
-	}
-	ft_putnbr(env->board.xplace);
-	ft_putchar(' ');
-	ft_putnbr(env->board.yplace);
-	ft_putchar('\n');
-	// fprintf(stderr, "%s\n", "??????????");
-	// ft_putstr("8 2\n");
+	// if (env->start == 0)
+	// 	get_start(env);
+	// // if (env->dir == RIGHT)
+	// // 	ft_error("fl");
+	// if (env->dir == LEFT)
+	// {
+	// 	fprintf(stderr, "%s\n", "<<<<<<<<<<<<<<<");
+	// 	go_upleft(env);
+	// }
+	// ft_putnbr(env->board.yplace);
+	// ft_putchar(' ');
+	// ft_putnbr(env->board.xplace);
+	// ft_putchar('\n');
+	fprintf(stderr, "%s\n", "??????????");
+	ft_putstr("8 2\n");
 	free_structs(env);
 }

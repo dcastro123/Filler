@@ -6,7 +6,7 @@
 /*   By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/24 18:23:27 by dcastro-          #+#    #+#             */
-/*   Updated: 2017/09/29 00:41:34 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/09/29 01:53:48 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,11 @@ int	main(void)
 	check_player(&env);
 	get_mapsize(&env);
 	env.start = 0;
-	fprintf(stderr, "1: %c\n", env.p1);
-	fprintf(stderr, "2: %c\n", env.p2);
+	// fprintf(stderr, "1: %c\n", env.p1);
+	// fprintf(stderr, "2: %c\n", env.p2);
 	while ((get_next_line(0, &line)) > 0)
 	{
+		fprintf(stderr, "line being pased: %s\n", line);
 		if (parse(&env, line))
 			check_piece(&env);
 		ft_strdel(&line);
