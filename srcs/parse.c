@@ -23,7 +23,7 @@ static	void	get_piece_size(t_env *env, char *line)
 static	void	create_piece(t_env *env, char *line)
 {
 	env->p.piece[env->i] = ft_strdup(line);
-	env->i++;
+	env->i += 1;
 }
 
 int	parse(t_env *env, char *line)
