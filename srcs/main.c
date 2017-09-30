@@ -6,7 +6,7 @@
 /*   By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/24 18:23:27 by dcastro-          #+#    #+#             */
-/*   Updated: 2017/09/29 01:53:48 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/09/29 18:41:31 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,24 +71,24 @@ static	void	init_env(t_env *env)
 	env->enemy.y = 0;
 	env->player.x = 0;
 	env->player.y = 0;
-	env->start = 0;
 }
 
 int	main(void)
 {
 	t_env	env;
 	char	*line;
+	int 	ret;
 
 	init_env(&env);
 	check_player(&env);
 	get_mapsize(&env);
 	env.start = 0;
-	// fprintf(stderr, "1: %c\n", env.p1);
-	// fprintf(stderr, "2: %c\n", env.p2);
+	// fprintf(stderr, "map size: y: %d x: %d\n", env.map_y, env.map_x);
 	while ((get_next_line(0, &line)) > 0)
 	{
-		fprintf(stderr, "line being pased: %s\n", line);
-		if (parse(&env, line))
+		// ft_putstr("12 13\n");
+		// fprintf(stderr, "line being passed: %s\n", line);
+		if ((ret = parse(&env, line)) == 1)
 			check_piece(&env);
 		ft_strdel(&line);
 	}

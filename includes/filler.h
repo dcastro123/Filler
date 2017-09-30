@@ -6,7 +6,7 @@
 /*   By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/24 18:11:29 by dcastro-          #+#    #+#             */
-/*   Updated: 2017/09/28 20:37:42 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/09/29 18:46:35 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 #include <stdio.h>
 #include <unistd.h>
 
-// # define OVERFLOW(i, y, x) i + y < 0 || x + j < 0 || i + y >= env->map_y || x + j >= env->map_x ? 1 : 0
 # define LEFT 2
 # define RIGHT 1
 typedef	struct s_p

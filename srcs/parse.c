@@ -6,7 +6,7 @@
 /*   By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/29 14:19:12 by dcastro-          #+#    #+#             */
-/*   Updated: 2017/09/29 14:20:16 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/09/29 18:35:20 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,55 +22,55 @@ static	void	get_piece_size(t_env *env, char *line)
 
 static	void	create_piece(t_env *env, char *line)
 {
-	fprintf(stderr, "env->i: %d\n", env->i);
-	fprintf(stderr, "line being duped: %s\n", line);
+	// fprintf(stderr, "env->i: %d\n", env->i);
+	// fprintf(stderr, "line being duped: %s\n", line);
 	env->p.piece[env->i] = ft_strdup(line);
-	fprintf(stderr, "piece after dupe: %s\n\n", env->p.piece[env->i]);
+	// fprintf(stderr, "piece after dupe: %s\n\n", env->p.piece[env->i]);
 	env->i += 1;
-	fprintf(stderr, "env->i++: %d\n", env->i);
+	// fprintf(stderr, "env->i++: %d\n", env->i);
+}
+
+static	void	store_mapline(t_env *env, char *line)
+{
+	env->board.map[env->count] = ft_strdup(line + 4);
+	// fprintf(stderr, "map after store at [%d]: %s\n", env->count, env->board.map[env->count]);
+	env->count += 1;
 }
 
 int	parse(t_env *env, char *line)
 {
-	int i = 0;
-	char	*c;
 	if (ft_isdigit(line[0]))
-		env->board.map[env->count++] = ft_strdup(line + 4);
+	{
+		store_mapline(env, line);
+	}
 	else if (ft_strstr(line, "Piece"))
 	{
-		fprintf(stderr, "%s\n", "getting piece size");
 		get_piece_size(env, line);
-		fprintf(stderr, "x: %d y: %d\n\n", env->p.x_size, env->p.y_size);
 	}
 	else if (line[0] == '*' || line[0] == '.')
 	{
-		fprintf(stderr, "%s\n", "strduping the line");
+		// fprintf(stderr, "%s\n", "strduping the line");
 		create_piece(env, line);
 		// fprintf(stderr, "piece at row[%d]: %s\n\n", env->i, env->p.piece[env->i]);
 	}
-	// if (env->p.piece)
-	// {
-	// 	c = ft_itoa(i++);
-	// 	ft_putstr_fd(c, 2);
-	// }
-	if (env->p.y_size == env->i)
+	if (env->p.y_size == env->i && env->map_y == env->count)
 	{
-		fprintf(stderr, "%s\n", "[pringting piece:");
-		fprintf(stderr, "%s\n", "-----------------");
-		int a, b = 0;
-		while (env->p.piece[a])
-		{
-			fprintf(stderr, "%s\n", "<<<<<<<<<<<<<<<");
-			b = 0;
-			while (env->p.piece[a][b])
-			{
-				fprintf(stderr, "%s\n", ">>>>>>>>>>>>>>>>");
-				fprintf(stderr, "env->p.piece[%d][%d]: %c\n", a, b, env->p.piece[a][b]);
-				b++;
-			}
-			a++;
-		}
-		fprintf(stderr, "%s\n\n", "-------------------------");
+		// int a = 0;
+		// fprintf(stderr, "%s\n\n", "printing map");
+		// while (a < env->map_y)
+		// {
+		// 	fprintf(stderr, "%s\n", env->board.map[a]);
+		// 	a++;
+		// }
+		// int b = 0;
+		// fprintf(stderr, "%s\n\n", "-----------------------");
+		// fprintf(stderr, "%s\n\n", "printing piece---------");
+		// while (b < env->p.y_size)
+		// {
+		// 	fprintf(stderr, "%s\n", env->p.piece[b]);
+		// 	b++;
+		// }
+		// fprintf(stderr, "%s\n\n", "-------------------------");
 		return (1);
 	}
 	return (0);

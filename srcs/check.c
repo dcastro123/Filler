@@ -6,7 +6,7 @@
 /*   By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/27 17:36:17 by dcastro-          #+#    #+#             */
-/*   Updated: 2017/09/29 01:49:03 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/09/29 18:34:01 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void	check_piece(t_env *env)
 	// ft_putchar(' ');
 	// ft_putnbr(env->board.xplace);
 	// ft_putchar('\n');
-	fprintf(stderr, "%s\n", "??????????");
-	ft_putstr("8 2\n");
+	// fprintf(stderr, "%s\n", "??????????");
+	write(1, "12 13\n", 4);
 	free_structs(env);
 }
