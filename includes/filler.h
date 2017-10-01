@@ -6,7 +6,7 @@
 /*   By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/24 18:11:29 by dcastro-          #+#    #+#             */
-/*   Updated: 2017/09/29 18:46:35 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/09/30 22:56:25 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,19 @@
 #include <stdio.h>
 #include <unistd.h>
 
-# define LEFT 2
-# define RIGHT 1
+# define	LEFT 2
+# define	RIGHT 1
+# define	XPIECE			env->p.x_size
+# define	YPIECE			env->p.y_size
+# define	MAPXPOS			env->board.map_posx
+# define	MAPYPOS			env->board.map_posy
+# define	YMAP			env->map_y
+# define	XMAP			env->map_x
+
+# define	MAX(x, y)			XMAP > YMAP ? XMAP : YMAP
+# define	INBOUNDS(i, j)		i >= 0 && j >= 0 && i < YPIECE && j < XPIECE ? 1 : 0
+# define	OUTBOUNDS(h, i)		h + MAPYPOS < 0 || MAPXPOS + i < 0 || h + MAPYPOS >= YMAP || i + MAPXPOS >= XMAP ? 1 : 0
+
 typedef	struct s_p
 {
 	int	x;
@@ -73,10 +84,10 @@ typedef	struct s_env
 	int			map_x;
 	int			map_y;
 	int			overlap;
-	int			heat;
+	int			value;
 	int			i;
 	int			count;
-	int			dist;
+	int			enemy_dist;
 	int			start;
 	int			dir;
 }				t_env;

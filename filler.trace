@@ -1,6 +1,5 @@
-seed = 1369
+seed = 6570
 O: error on input
-X: timedout
 ./filler won
 Score:
-0AGAINST0
+0AGAINST159

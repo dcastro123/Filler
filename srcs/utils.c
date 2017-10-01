@@ -6,7 +6,7 @@
 /*   By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/27 17:36:38 by dcastro-          #+#    #+#             */
-/*   Updated: 2017/09/28 18:44:39 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/09/30 03:38:12 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,15 @@ void	free_structs(t_env *env)
 	while (++i < env->map_y)
 		free(env->board.map[i]);
 	free(env->board.map);
+	if (!(env->board.map = (char**)malloc(sizeof(char*) * (env->map_y + 1))))
+		ft_error("malloc error\n");
 	i = -1;
-	while (++i < env->p.x_size)
+	while (++i < env->p.y_size)
 		free(env->p.piece[i]);
 	free(env->p.piece);
-	ft_bzero(env->board.map, sizeof(env->map_y));
-	ft_bzero(env->p.piece, env->p.y_size);
+	if (!(env->p.piece = (char**)malloc(sizeof(char*) * (env->p.y_size + 1))))
+		ft_error("piece malloc error\n");
 	env->count = 0;
 	env->i = 0;
+	env->overlap = 0;
 }

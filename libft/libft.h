@@ -6,7 +6,7 @@
 /*   By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 20:36:35 by dcastro-          #+#    #+#             */
-/*   Updated: 2017/09/29 17:24:26 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/09/30 02:38:52 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <limits.h>
 
 # define BUFF_SIZE 8
+# define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 
 typedef	struct		s_list
 {
@@ -27,6 +28,13 @@ typedef	struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct	s_file_buff
+{
+	int			fd;
+	char		*start;
+	char		*str;
+}				t_file_buff;
 
 int					get_next_line(const int fd, char **line);
 int					ft_atoi(const char *str);
