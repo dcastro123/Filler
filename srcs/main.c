@@ -6,7 +6,7 @@
 /*   By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/24 18:23:27 by dcastro-          #+#    #+#             */
-/*   Updated: 2017/09/30 22:26:46 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/10/01 16:17:02 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,20 @@ static	void	get_info(t_env *env)
 	get_next_line(0, &line);
 	if (ft_strchr(line, '1'))
 	{
-		env->p1 = 'O';
-		env->p2 = 'X';
+		env->p1 = 'o';
+		env->p2 = 'x';
 	}
 	else if (ft_strchr(line, '2'))
 	{
-		env->p1 = 'X';
-		env->p2 = 'O';
+		env->p1 = 'x';
+		env->p2 = 'o';
 	}
 	ft_strdel(&line);
 	get_next_line(0, &line);
 	if (ft_strstr(line, "Plateau"))
 	{
 		env->map_y = ft_atoi(line + 8);
-		env->map_x = ft_atoi(line + 10);
+		env->map_x = ft_atoi(line + 11);
 	}
 	ft_strdel(&line);
 	if (!(env->board.map = (char**)malloc(sizeof(char*) * (env->map_y + 1))))
@@ -43,10 +43,10 @@ static	void	get_info(t_env *env)
 
 static	void	init_env(t_env *env)
 {
-	t_board *board;
-	t_p 	*p;
-	t_enemy	*e;
-	t_player *pl;
+	t_board		*board;
+	t_p			*p;
+	t_enemy		*e;
+	t_player	*pl;
 
 	env = (t_env*)ft_memalloc(sizeof(t_env));
 	p = &env->p;
@@ -68,27 +68,20 @@ static	void	init_env(t_env *env)
 	env->board.yplace = 0;
 }
 
-int	main(void)
+int				main(void)
 {
 	t_env	env;
 	char	*line;
-	int 	ret;
+	int		ret;
 
 	init_env(&env);
 	get_info(&env);
 	env.start = 0;
 	while ((get_next_line(0, &line)) > 0)
 	{
-		// // ft_putstr("12 13\n");
-		// write(2, "line being passed: ", 19);
-		// write(2, line, 17);
-		// write(2, "\n", 1);
-		// write(2, "before parse\n", 10);
 		if ((ret = parse(&env, line)) == 1)
 			check_piece(&env);
-		// write(2, "before delete\n", 12);
 		ft_strdel(&line);
-		// write(2, "after delete\n", 12);
 	}
 	return (0);
 }

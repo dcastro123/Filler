@@ -6,16 +6,23 @@
 /*   By: dcastro- <dcastro-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/27 17:36:38 by dcastro-          #+#    #+#             */
-/*   Updated: 2017/09/30 03:38:12 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/10/01 16:12:30 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/filler.h"
 
-int	ft_error(char *s)
+int		ft_error(char *s)
 {
 	ft_putstr_fd(s, 2);
 	return (0);
+}
+
+void	set_piece(t_env *env, int value)
+{
+	env->enemy_dist = value;
+	env->board.xplace = env->board.map_posx;
+	env->board.yplace = env->board.map_posy;
 }
 
 void	free_structs(t_env *env)
